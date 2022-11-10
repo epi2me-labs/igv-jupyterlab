@@ -5,7 +5,7 @@ import random
 from functools import partial
 from ipywidgets import Output, DOMWidget
 from typing_extensions import TypedDict
-from traitlets import Unicode, Dict, Bunch
+from traitlets import Unicode, Dict, Bunch, Callable, List as TList, Bool
 from IPython.display import SVG, display
 from typing import List, Optional, Any, Union
 from ._frontend import module_name, module_version
@@ -70,12 +70,14 @@ class IGV(DOMWidget):
     initialConfig = Dict().tag(sync=True)
     locus = Unicode().tag(sync=True)
     svg = Unicode().tag(sync=True)
+    selectedTrackData = TList().tag(sync=True)
+    popupDisabled = Bool().tag(sync=True)
 
     def __init__(
         self, 
         genome: Union[str, Reference], 
         locus: str = None,
-        tracks: List[Dict] = None # Should be List[Track] ideally, see top
+        tracks: List[Dict] = None # Should be List[Track] ideally, see top,
         ):
         """
         Initialises an IGV browser instance. Basic information is
@@ -100,7 +102,7 @@ class IGV(DOMWidget):
             "id": self.id, 
             "locus": self.locus, 
             "tracks": tracks, 
-            "genome" if isinstance(genome, str) else "reference": genome
+            "genome" if isinstance(genome, str) else "reference": genome,
         })
 
     def _gen_id(
