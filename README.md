@@ -3,7 +3,7 @@
 
 # igv-jupyterlab
 
-❗ **This repository is no longer maintained. If you wish to take ownership of the project please reach out to us via an issue.** ❗
+❗ **This repository is no longer maintained. If you wish to take ownership of the project please reach out to us, or simply fork the repository.** ❗
 
 igv-jupyterlab is an extension for Jupyter Lab and traditional Jupyter Notebooks which wraps igv.js.
 
