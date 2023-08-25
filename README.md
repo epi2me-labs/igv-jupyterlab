@@ -142,6 +142,41 @@ Displaying the current IGV view as an SVG is simple - and only requires one call
 igv.get_svg()
 ```
 
+### Track-click handler
+
+The default IGV track-click popup – that lists annotation details for a GFF track for example –
+will probably be truncated by the edges of a notebook cell.
+You might also want to use a Python callback to do something when a track region is clicked:
+for example perform a computation, call an API, or render another widget.
+
+The IGV widget's trait `selectedTrackData` allows this.
+
+Example:
+
+```python
+igv.popupDisabled = True
+#(click on a track region)
+print(igv.selectedTrackData)
+```
+
+Or to render a Pandas dataframe in sync with the trackdata region:
+```python
+import pandas as pd
+
+igv = ...
+
+igv.popupDisabled = False
+
+details_widget = widgets.Output(layout={'border': '1px solid black'})
+@details_widget.capture(clear_output=True)
+def handle_track_click(track_data_change_event):
+    df = pd.DataFrame(track_data_change_event['new'])
+    display(df)
+
+igv.observe(handle_track_click, names='selectedTrackData')
+
+widgets.VBox([igv, details_widget])
+```
 
 ## Development Installation
 
