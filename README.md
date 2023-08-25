@@ -1,9 +1,9 @@
 
+
+
 # igv-jupyterlab
 
-[![Build Status](https://travis-ci.org/epi2me-labs/igv-jupyterlab.svg?branch=master)](https://travis-ci.org/epi2me-labs/igv_jupyterlab)
-[![codecov](https://codecov.io/gh/epi2me-labs/igv-jupyterlab/branch/master/graph/badge.svg)](https://codecov.io/gh/epi2me-labs/igv-jupyterlab)
-
+❗ **This repository is no longer maintained. If you wish to take ownership of the project please reach out to us via an issue.** ❗
 
 igv-jupyterlab is an extension for Jupyter Lab and traditional Jupyter Notebooks which wraps igv.js.
 
